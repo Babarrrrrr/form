@@ -66,16 +66,16 @@ img {
 
 .button {
     flex: 1;
-    margin-right: 10px; /* Ajoute un espacement entre les boutons */
+    margin-right: 10px; 
 }
 
 .button-ajout-compte {
     display: flex;
-    justify-content: space-between; /* Répartit l'espace disponible entre les éléments */
+    justify-content: space-between; 
 }
 
 .button-ajout-compte input[type="submit"],
 .button-ajout-compte input[type="reset"] {
-    flex: 1; /* Utilise une part égale de l'espace disponible */
-    margin-right: 10px; /* Ajoute un espacement entre les boutons */
+    flex: 1; 
+    margin-right: 10px; 
 }
