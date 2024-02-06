@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Connexion</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Paris_VIII.svg" alt="logo p8" class="center-image">
+    <h1>Formulaire de Connexion</h1>
+
+    <!-- Formulaire se connecter -->
+    <form action="{{ url_for('traitement') }}" method="post">
+        {{ form.hidden_tag() }}
+        <label for="identifiant">Identifiant:</label>
+        <input type="text" name="identifiant" required>
+    
+        <label for="mot_de_passe">Mot de passe:</label>
+        <input type="password" name="mot_de_passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, et un caractère spécial." required>
+    
+        <div class="button-container">
+            <input type="submit" value="Ok" class="button">
+            <input type="reset" value="Reset" class="button">
+        </div>
+    </form>
+
+    <!-- Formulaire pour ajouter un compte -->
+    <form action="{{ url_for('ajouter_compte') }}" method="post">
+        {{ form.hidden_tag() }}
+        <label for="nouvel_identifiant">Nouvel Identifiant:</label>
+        <input type="text" name="nouvel_identifiant" required>
+        
+        <label for="nouveau_mot_de_passe">Nouveau Mot de passe:</label>
+        <input type="password" name="nouveau_mot_de_passe" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" title="Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, et un caractère spécial." required>
+        
+        <div class="button-ajout-compte">    
+            <input type="submit" value="Ajouter Compte">
+            <input type="reset" value="Reset" class="button">
+        </div>
+    </form>
+
+</body>
+</html>
