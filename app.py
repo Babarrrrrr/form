@@ -5,7 +5,10 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+load_dotenv()
 import os
+
 
 app = Flask(__name__)
 
@@ -15,7 +18,11 @@ app.config['SECRET_KEY'] = os.urandom(24)
 # Initialiser la protection CSRF
 csrf = CSRFProtect(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/authentification'
+# Sécurisation des cookies de session
+app.config['SESSION_COOKIE_SECURE'] = True
+
+# Connexion à la bd
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 db = SQLAlchemy(app)
 
 class Utilisateur(db.Model):
@@ -49,6 +56,7 @@ def traitement():
     if len(mot_de_passe_saisi) < 8:
         return "Mot de passe invalide. Veuillez saisir un mot de passe d'au moins 8 caractères."
 
+    # requête paramétrée
     utilisateur = Utilisateur.query.filter_by(identifiant=identifiant_saisi).first()
 
     if utilisateur and check_password_hash(utilisateur.mot_de_passe, mot_de_passe_saisi):
@@ -83,4 +91,6 @@ def ajouter_compte():
         return "Erreur"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # certificat SSL (pour test local uniquement)
+    app.run(ssl_context=('cert.pem', 'key.pem'), debug=False)
+

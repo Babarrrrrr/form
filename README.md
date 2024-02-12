@@ -12,7 +12,8 @@ Avant de pouvoir exécuter le formulaire de connexion, assurez-vous de suivre ce
    - LAMPP : Téléchargez et installez LAMPP depuis [https://www.apachefriends.org/index.html](https://www.apachefriends.org/index.html). Une fois installé, démarrez le serveur Apache et MySQL en exécutant la commande `sudo /opt/lampp/lampp start`.
 
 2. **Créer la base de données** :
-   - Exécutez le fichier `database.sql` fourni avec le projet pour créer la base de données "authentification".
+   - Exécutez le fichier `database.sql` fourni avec le projet dans un SGBD MySQL pour créer la base de données "authentification".
+   - Avec un éditeur de texte, ouvrez le fichier `.env` et modifier les champs "username" et "password" avec les informations de connexion de votre base de donnée.
 
 3. **Installer les dépendances Python** :
    - Ouvrez votre terminal et assurez-vous d'être dans le répertoire du projet.
