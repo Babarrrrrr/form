@@ -4,3 +4,5 @@ Flask-WTF
 Werkzeug
 WTForms
 python-dotenv
+mysqlclient
+MySQLdb
