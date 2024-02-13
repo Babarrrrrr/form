@@ -6,3 +6,4 @@ WTForms
 python-dotenv
 mysqlclient
 MySQLdb
+SQLAlchemy
